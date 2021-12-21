@@ -1,0 +1,326 @@
+@charset 'utf-8';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+@import url('https://use.fontawesome.com/releases/v5.15.4/css/all.css');
+
+// Variable
+$gray: #777;
+$whiteGray: #ddd;
+$whiteGrayHover: #ccc;
+$whiteGrayActive: #bbb;
+$darkGray: #555;
+$red: #ff4f4f;
+$blue: #4952f8;
+$green: #00c100;
+$white: #fff;
+$whiteBlack: #333;
+$black: #282828;
+$orange: #f88629;
+$yellow: #f7d740;
+$purple: #ab14fc;
+$pink: #fb44e4;
+$navy: #5a02aa;
+$bg: #00000020;
+
+$index1: 5;
+$index2: 10;
+$index3: 15;
+$index4: 20;
+$index5: 25;
+$index6: 30;
+$index9: 99999999999999999999;
+
+// Mixin
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@mixin flex-start {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+@mixin flex-end {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+@mixin text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@mixin wrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// Reset
+* {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: 'Noto Sans KR', sans-serif;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+button, a[btn] {
+  background-color: $whiteGray;
+  border: none;
+  padding: 4px 14px;
+  color: $darkGray;
+  font-size: 14px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $whiteGrayHover;
+    color: $whiteBlack;
+  }
+  &:active {
+    background-color: $whiteGrayActive;
+    color: $black;
+  }
+}
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+
+  thead {
+    position: sticky;
+    top: -1px;
+    background-color: #f5f5f5;
+    z-index: $index1;
+
+    th {
+      font-weight: 500;
+      text-align: left;
+      white-space: nowrap;
+      overflow: hidden;
+      letter-spacing: 1px;
+      font-size: 14px;
+      padding: 10px;
+      color: $darkGray;
+      border: 1px solid $whiteGray;
+      transition: .3s;
+    }
+  }
+  tbody {
+    tr:hover {
+      background-color: $whiteGray;
+      & > td {
+        color: $black;
+      }
+    }
+
+    td {
+      font-size: 13px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 10px;
+      color: $darkGray;
+      border: 1px solid $whiteGray;
+      transition: .3s;
+      position: relative;
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  border-radius: 0;
+  background-color: #eee;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #aaa;
+  border-radius: 10px;
+}
+// Transition
+.scale-transition-enter-active, .scale-transition-leave-active {
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1) !important;
+}
+.scale-transition-move {
+  transition: transform 0.6s;
+}
+.scale-transition-enter, .scale-transition-leave, .scale-transition-leave-to {
+  opacity: 0;
+  transform: scale(0);
+}
+.scale-rotate-transition-enter-active, .scale-rotate-transition-leave-active {
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1) !important;
+}
+.scale-rotate-transition-move {
+  transition: transform 0.6s;
+}
+.scale-rotate-transition-enter, .scale-rotate-transition-leave, .scale-rotate-transition-leave-to {
+  opacity: 0;
+  transform: scale(0) rotate(-45deg);
+}
+.scale-rotate-reverse-transition-enter-active, .scale-rotate-reverse-transition-leave-active {
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1) !important;
+}
+.scale-rotate-reverse-transition-move {
+  transition: transform 0.6s;
+}
+.scale-rotate-reverse-transition-enter, .scale-rotate-reverse-transition-leave, .scale-rotate-reverse-transition-leave-to {
+  opacity: 0;
+  transform: scale(0) rotate(45deg);
+}
+.message-transition-enter-active, .message-transition-leave-active {
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1) !important;
+}
+.message-transition-move {
+  transition: transform 0.6s;
+}
+.message-transition-enter, .message-transition-leave-to {
+  opacity: 0;
+  transform: translateY(-15px);
+}
+.message-transition-leave, .message-transition-leave-active {
+  position: absolute;
+}
+.slide-y-transition-enter-active, .slide-y-transition-leave-active {
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1) !important;
+}
+.slide-y-transition-move {
+  transition: transform 0.6s;
+}
+.slide-y-transition-enter, .slide-y-transition-leave-to {
+  opacity: 0;
+  transform: translateY(-15px);
+}
+.slide-y-reverse-transition-enter-active, .slide-y-reverse-transition-leave-active {
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1) !important;
+}
+.slide-y-reverse-transition-move {
+  transition: transform 0.6s;
+}
+.slide-y-reverse-transition-enter, .slide-y-reverse-transition-leave-to {
+  opacity: 0;
+  transform: translateY(15px);
+}
+.scroll-y-transition-enter-active, .scroll-y-transition-leave-active {
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1) !important;
+}
+.scroll-y-transition-move {
+  transition: transform 0.6s;
+}
+.scroll-y-transition-enter, .scroll-y-transition-leave-to {
+  opacity: 0;
+}
+.scroll-y-transition-enter {
+  transform: translateY(-15px);
+}
+.scroll-y-transition-leave-to {
+  transform: translateY(15px);
+}
+.scroll-y-reverse-transition-enter-active, .scroll-y-reverse-transition-leave-active {
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1) !important;
+}
+.scroll-y-reverse-transition-move {
+  transition: transform 0.6s;
+}
+.scroll-y-reverse-transition-enter, .scroll-y-reverse-transition-leave-to {
+  opacity: 0;
+}
+.scroll-y-reverse-transition-enter {
+  transform: translateY(15px);
+}
+.scroll-y-reverse-transition-leave-to {
+  transform: translateY(-15px);
+}
+.scroll-x-transition-enter-active, .scroll-x-transition-leave-active {
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1) !important;
+}
+.scroll-x-transition-move {
+  transition: transform 0.6s;
+}
+.scroll-x-transition-enter, .scroll-x-transition-leave-to {
+  opacity: 0;
+}
+.scroll-x-transition-enter {
+  transform: translateX(-15px);
+}
+.scroll-x-transition-leave-to {
+  transform: translateX(15px);
+}
+.scroll-x-reverse-transition-enter-active, .scroll-x-reverse-transition-leave-active {
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1) !important;
+}
+.scroll-x-reverse-transition-move {
+  transition: transform 0.6s;
+}
+.scroll-x-reverse-transition-enter, .scroll-x-reverse-transition-leave-to {
+  opacity: 0;
+}
+.scroll-x-reverse-transition-enter {
+  transform: translateX(15px);
+}
+.scroll-x-reverse-transition-leave-to {
+  transform: translateX(-15px);
+}
+.slide-x-transition-enter-active, .slide-x-transition-leave-active {
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1) !important;
+}
+.slide-x-transition-move {
+  transition: transform 0.6s;
+}
+.slide-x-transition-enter, .slide-x-transition-leave-to {
+  opacity: 0;
+  transform: translateX(-15px);
+}
+.slide-x-reverse-transition-enter-active, .slide-x-reverse-transition-leave-active {
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1) !important;
+}
+.slide-x-reverse-transition-move {
+  transition: transform 0.6s;
+}
+.slide-x-reverse-transition-enter, .slide-x-reverse-transition-leave-to {
+  opacity: 0;
+  transform: translateX(15px);
+}
+.fade-transition-enter-active, .fade-transition-leave-active {
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1) !important;
+}
+.fade-transition-move {
+  transition: transform 0.6s;
+}
+.fade-transition-enter, .fade-transition-leave-to {
+  opacity: 0 !important;
+}
+.fab-transition-enter-active, .fab-transition-leave-active {
+  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1) !important;
+}
+.fab-transition-move {
+  transition: transform 0.6s;
+}
+.fab-transition-enter, .fab-transition-leave-to {
+  transform: scale(0) rotate(-45deg);
+}
+
+
+

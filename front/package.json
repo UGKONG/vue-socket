@@ -1,0 +1,41 @@
+{
+  "name": "front",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "webpack-dev-server --mode development --hot --port 80",
+    "build": "webpack --mode production",
+    "db": "json-server --watch --host localhost --port 81 ./db.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "babel-loader": "^8.2.3",
+    "css-loader": "^6.5.1",
+    "file-loader": "^6.2.0",
+    "html-loader": "^3.0.1",
+    "html-webpack-plugin": "^5.5.0",
+    "sass": "^1.43.4",
+    "sass-loader": "^12.3.0",
+    "style-loader": "^3.3.1",
+    "vue-loader": "^15.9.8",
+    "vue-template-compiler": "^2.6.14",
+    "webpack": "^5.64.2",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.5.0"
+  },
+  "dependencies": {
+    "axios": "^0.24.0",
+    "express": "^4.17.1",
+    "http-server": "^14.0.0",
+    "json-server": "^0.17.0",
+    "vue": "^2.6.14",
+    "vue-router": "^3.5.3",
+    "vuedraggable": "^2.24.3",
+    "vuex": "^3.6.2"
+  }
+}
